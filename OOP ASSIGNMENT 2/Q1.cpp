@@ -2,25 +2,36 @@
 #include<cstring>
 using namespace std;
 class Book{
-    double id;
-    string name;
-    public: 
-    int set(int id,string name);
-    void get();
+    protected:
+    string title;
+    string author;
+    public:
+    virtual void add_book()=0;
+    virtual void remove_book()=0;
+    virtual void update_book()=0;
 };
 class Textbook:public Book{
     int id;
     string name;
     public:
     Textbook(int i,string n):id(i),name(n){}
-
-    overide int set(int id,string name){
-        id=this->id;
-        name=this->name;
+    void add_book(){
+        cout<<"Enter Text Book name :"<<endl;
+        cin>>name;
+        cout<<"Enter Text Book Id :"<<endl;
+        cin>>id;
     }
-    overide void get(){
-        cout<<"The Id is "<<this->id<<endl;
-        cout<<"The Name is "<<this->name<<endl;
+    void remove_book(){
+        cout<<"Enter Text Book name :"<<endl;
+        cin>>name;
+        cout<<"Enter Text Book Id :"<<endl;
+        cin>>id;
+    }
+    void update_book(){
+        cout<<"Enter Text Book name :"<<endl;
+        cin>>name;
+        cout<<"Enter Text Book Id :"<<endl;
+        cin>>id;
     }
 };
 
@@ -29,18 +40,32 @@ class Novel:public Book{
     string name;
     public:
     Novel(int i,string n):id(i),name(n){}
-    overide int set(int id,string name){
-        id=this->id;
-        name=this->name;
+    void Book::add_book(){
+        cout<<"Enter Text Book name :"<<endl;
+        cin>>name;
+        cout<<"Enter Text Book Id :"<<endl;
+        cin>>id;
     }
-    overide void get(){
-        cout<<"The Id is "<<this->id<<endl;
-        cout<<"The Name is "<<this->name<<endl;
+    void Book::remove_book(){
+        cout<<"Enter Text Book name :"<<endl;
+        cin>>name;
+        cout<<"Enter Text Book Id :"<<endl;
+        cin>>id;
+    }
+    void Book::update_book(){
+        cout<<"Enter Text Book name :"<<endl;
+        cin>>name;
+        cout<<"Enter Text Book Id :"<<endl;
+        cin>>id;
     }
 };
 
 class LibraryMember{
-    
+    protected:
+    string name;
+    int Id;
+    public:
+
 };
 class StudentMember:public LibraryMember{
 
