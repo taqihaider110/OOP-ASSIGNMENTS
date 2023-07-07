@@ -2,61 +2,58 @@
 #include<cstring>
 using namespace std;
 class Book{
-    protected:
-    string title;
-    string author;
     public:
     virtual void add_book()=0;
     virtual void remove_book()=0;
     virtual void update_book()=0;
 };
 class Textbook:public Book{
-    int id;
-    string name;
+    string subject;
+    string author;
     public:
-    Textbook(int i,string n):id(i),name(n){}
-    void add_book(){
+    Textbook(string n,string au):subject(n),author(au){}
+    void add_book() override{
         cout<<"Enter Text Book name :"<<endl;
-        cin>>name;
-        cout<<"Enter Text Book Id :"<<endl;
-        cin>>id;
+        cin>>subject;
+        cout<<"Enter Author name :"<<endl;
+        cin>>author;
     }
-    void remove_book(){
-        cout<<"Enter Text Book name :"<<endl;
-        cin>>name;
-        cout<<"Enter Text Book Id :"<<endl;
-        cin>>id;
+    void remove_book() override{
+        cout<<"Enter Book name to remove :"<<endl;
+        cin>>subject;
+        cout<<"Enter Author name to remove :"<<endl;
+        cin>>author;
     }
-    void update_book(){
-        cout<<"Enter Text Book name :"<<endl;
-        cin>>name;
-        cout<<"Enter Text Book Id :"<<endl;
-        cin>>id;
+    void update_book() override {
+        cout<<"Enter Text Book name to update :"<<endl;
+        cin>>subject;
+        cout<<"Enter Publisher name to update :"<<endl;
+        cin>>author;
     }
 };
 
 class Novel:public Book{
-    int id;
     string name;
+    string author;
     public:
-    Novel(int i,string n):id(i),name(n){}
-    void Book::add_book(){
-        cout<<"Enter Text Book name :"<<endl;
+    Novel(string nm,string au):name(nm),author(au){}
+    void add_book() override{
+        cout<<"Enter Novel name :"<<endl;
         cin>>name;
-        cout<<"Enter Text Book Id :"<<endl;
-        cin>>id;
+        cout<<"Enter Novel Author name :"<<endl;
+        cin>>author;
     }
-    void Book::remove_book(){
-        cout<<"Enter Text Book name :"<<endl;
+    void remove_book() override{
+        cout<<"Enter Novel name to remove:"<<endl;
         cin>>name;
-        cout<<"Enter Text Book Id :"<<endl;
-        cin>>id;
+        cout<<"Enter Novel Author name to remove :"<<endl;
+        cin>>author;
     }
-    void Book::update_book(){
-        cout<<"Enter Text Book name :"<<endl;
+    void update_book() override{
+        cout<<"Enter Novel name to update:"<<endl;
         cin>>name;
-        cout<<"Enter Text Book Id :"<<endl;
-        cin>>id;
+        cout<<"Enter Novel Author name to update :"<<endl;
+        cin>>author;
     }
 };
 
@@ -65,6 +62,7 @@ class LibraryMember{
     string name;
     int Id;
     public:
+
 
 };
 class StudentMember:public LibraryMember{
