@@ -81,27 +81,62 @@ class Novel:public Book{
 };
 
 class LibraryMember{
-    protected:
-    string name;
-    int Id;
     public:
-
+    virtual void get_data()=0;
+    virtual void display_data()=0;
 
 };
 class StudentMember:public LibraryMember{
-
+    private:
+    int Id;
+    string name;
+    public:
+    int id;
+    string nm;
+    StudentMember(){}
+    void get_data(){
+        cout<<"Enter Student member Id :"<<endl;
+        cin>>id;
+        Id=id;
+        cout<<"Enter Student member Name :"<<endl;
+        getline(cin>>ws, nm);
+        name = nm;
+        }
+    void display_data(){
+        cout<<"Student member Id :"<<Id<<endl;
+        cout<<"Student member Name :"<<name<<endl;
+        }
 };
 class FacultyMember:public LibraryMember{
-
+    private:
+    int Id;
+    string name;
+    string designation;
+    public:
+    int id;
+    string nm,dsg;
+    FacultyMember(){}
+    void get_data(){
+        cout<<"Enter Faculty member Id :"<<endl;
+        cin>>id;
+        Id=id;
+        cout<<"Enter Faculty member Name :"<<endl;
+        getline(cin>>ws, nm);
+        name = nm;
+        cout<<"Enter Faculty member Designation :"<<endl;
+        getline(cin>>ws, dsg);
+        designation = dsg;
+        }
+    void display_data(){
+        cout<<"Faculty member Id :"<<Id<<endl;
+        cout<<"Faculty member Name :"<<name<<endl;
+        cout<<"Faculty member Designation :"<<designation<<endl;
+        }
 };
 
 int main(){
     Textbook t;
     t.add_book();
     t.display_book();
-    // t.update_book();
-    // t.display_book();
-    // t.remove_book();
-    // t.display_book();
     return 0;
 }
