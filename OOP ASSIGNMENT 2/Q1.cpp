@@ -6,29 +6,41 @@ class Book{
     virtual void add_book()=0;
     virtual void remove_book()=0;
     virtual void update_book()=0;
+    virtual void display_book()=0;
 };
 class Textbook:public Book{
     string subject;
     string author;
     public:
-    Textbook(string n,string au):subject(n),author(au){}
+    string n,au;
+    Textbook(){}
     void add_book() override{
-        cout<<"Enter Text Book name :"<<endl;
-        cin>>subject;
+        cout<<"Enter TextBook name :"<<endl;
+        getline(cin>>ws, n);
+        subject=n;
         cout<<"Enter Author name :"<<endl;
-        cin>>author;
+        getline(cin>>ws, au);
+        author=au;
     }
     void remove_book() override{
-        cout<<"Enter Book name to remove :"<<endl;
-        cin>>subject;
+        cout<<"Enter TextBook name to remove :"<<endl;
+        getline(cin>>ws, n);
+        subject=n;
         cout<<"Enter Author name to remove :"<<endl;
-        cin>>author;
+        getline(cin>>ws, au);
+        author=au;
     }
     void update_book() override {
-        cout<<"Enter Text Book name to update :"<<endl;
-        cin>>subject;
+        cout<<"Enter TextBook name to update :"<<endl;
+        getline(cin>>ws, au);
+        author=au;
         cout<<"Enter Publisher name to update :"<<endl;
-        cin>>author;
+        getline(cin>>ws, au);
+        author=au;
+    }
+    void display_book() override{
+        cout<<"Text Book name :"<<subject<<endl;
+        cout<<"Author name :"<<author<<endl;
     }
 };
 
@@ -36,24 +48,35 @@ class Novel:public Book{
     string name;
     string author;
     public:
-    Novel(string nm,string au):name(nm),author(au){}
+    string nm,au;
+    Novel(){}
     void add_book() override{
         cout<<"Enter Novel name :"<<endl;
-        cin>>name;
+        getline(cin>>ws, nm);
+        name = nm;
         cout<<"Enter Novel Author name :"<<endl;
-        cin>>author;
+        getline(cin>>ws, au);
+        author = au;
     }
     void remove_book() override{
         cout<<"Enter Novel name to remove:"<<endl;
-        cin>>name;
+        getline(cin>>ws, nm);
+        name = nm;
         cout<<"Enter Novel Author name to remove :"<<endl;
-        cin>>author;
+        getline(cin>>ws, au);
+        author = au;
     }
     void update_book() override{
         cout<<"Enter Novel name to update:"<<endl;
-        cin>>name;
+        getline(cin>>ws, nm);
+        name = nm;
         cout<<"Enter Novel Author name to update :"<<endl;
-        cin>>author;
+        getline(cin>>ws, au);
+        author = au;
+    }
+    void display_book() override{
+        cout<<"Novel name :"<<name<<endl;
+        cout<<"Novel Author name :"<<author<<endl;
     }
 };
 
@@ -73,6 +96,12 @@ class FacultyMember:public LibraryMember{
 };
 
 int main(){
-    
+    Textbook t;
+    t.add_book();
+    t.display_book();
+    // t.update_book();
+    // t.display_book();
+    // t.remove_book();
+    // t.display_book();
     return 0;
 }
