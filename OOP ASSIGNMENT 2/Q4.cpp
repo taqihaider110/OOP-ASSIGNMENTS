@@ -106,6 +106,11 @@ public:
     }
 };
 int main(){
+    cout<<"Name: Wajih ur Rahman"<< endl;
+    cout<<"Roll No: CT-22083"<< endl;
+    cout<<"Name: Taqi Haider"<< endl;
+    cout<<"Roll No: CT-22092"<< endl;
+    cout<<endl;
     try{
         Database<Person> db;
         Person* student1 = new Student("Taqi Haider", 20, "CT-092");

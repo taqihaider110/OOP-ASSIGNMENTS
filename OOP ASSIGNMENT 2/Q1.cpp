@@ -251,6 +251,11 @@ class Library{
     }
 };
 int main(){
+    cout<<"Name: Wajih ur Rahman"<< endl;
+    cout<<"Roll No: CT-22083"<< endl;
+    cout<<"Name: Taqi Haider"<< endl;
+    cout<<"Roll No: CT-22092"<< endl;
+    cout<<endl;
     Library Lib;
 
     Book* book1 = new Textbook("In search of Lost time", "Marcel Proust", "Biography");
