@@ -70,9 +70,9 @@ public:
 
 int main()
 {
-    management_system Ahemd_Ali(2000, "Ahmed", "CT-22099");
-    Ahemd_Ali.bill();
-    Ahemd_Ali.receipt();
-    Ahemd_Ali.showStudentData();
+    management_system Ahmed_Ali(2000, "Ahmed", "CT-22092");
+    Ahmed_Ali.bill();
+    Ahmed_Ali.receipt();
+    Ahmed_Ali.showStudentData();
     return 0;
 }
