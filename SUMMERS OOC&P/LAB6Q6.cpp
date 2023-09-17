@@ -1,73 +1,63 @@
 #include <iostream>
 using namespace std;
 
-class person
-{
+class Person {
 private:
     string name;
     int age;
     string gender;
 
 public:
-    person(string x, int y, string z) : name(x), age(y), gender(z) {}
-    virtual void showdata()
-    {
+    Person(string n, int a, string g) : name(n), age(a), gender(g) {}
+    virtual void displayData() {
         cout << "Name: " << name << endl;
         cout << "Age: " << age << endl;
         cout << "Gender: " << gender << endl;
     }
 };
 
-class student : public person
-{
-    string studentid;
+class Student : public Person {
+private:
+    string studentId;
 
 public:
-    student(string id, string x, int y, string z) : person(x, y, z), studentid(id)
-    {
-    }
-    void display()
-    {
+    Student(string id, string n, int a, string g) : Person(n, a, g), studentId(id) {}
+    void displayStudentRecord() {
         cout << "NED Student Record " << endl;
         cout << endl;
     }
 
-    void showdata() override
-    {
-
-        cout << "Student ID: " << studentid << endl;
-        person::showdata();
+    void displayData() override {
+        cout << "Student ID: " << studentId << endl;
+        Person::displayData();
     }
 };
 
-class graduate_student : public student
-{
-    int year_of_graduate;
-    string degree_name;
+class GraduateStudent : public Student {
+private:
+    int graduationYear;
+    string degreeName;
 
 public:
-    graduate_student(string d, int v, string id, string x, int y, string z) : student(id, x, y, z), degree_name(d), year_of_graduate(v)
-    {}
+    GraduateStudent(string degree, int year, string id, string n, int a, string g) : Student(id, n, a, g), degreeName(degree), graduationYear(year) {}
 
-    void showdata() override
-    {
+    void displayData() override {
         cout << "NED Alumni Record" << endl;
         cout << endl;
-        student::showdata();
-        cout << "Student Graduated in year " << year_of_graduate << endl;
-        cout << "Bachelors of " << degree_name << endl;
+        Student::displayData();
+        cout << "Student Graduated in year " << graduationYear << endl;
+        cout << "Bachelors of " << degreeName << endl;
     }
 };
 
-int main()
-{
+int main() {
     cout << endl;
-    student s1("CT-22099", "Rafay", 20, "Male");
-    s1.display();
-    s1.showdata();
-    cout<<endl;
-    graduate_student g1("Computer Science", 2019, "CT-15082", "Haris", 26, "Male");
-    g1.showdata();
+    Student student1("CT-22092", "Taqi", 20, "Male");
+    student1.displayStudentRecord();
+    student1.displayData();
+    cout << endl;
+    GraduateStudent gradStudent1("Computer Science", 2019, "CT-19021", "Abid", 23, "Male");
+    gradStudent1.displayData();
     cout << endl;
     return 0;
 }
