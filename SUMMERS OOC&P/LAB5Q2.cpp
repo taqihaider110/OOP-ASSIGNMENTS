@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-class car{
+class Car{
 private:
     string brandName;
     float price_new;
@@ -34,7 +34,7 @@ public:
     }
 };
 int main(){
-    car A;
+    Car A;
     A.getPrice_afterUse();
     cout << endl;
     A.display();
@@ -50,5 +50,3 @@ int main(){
     }
     return 0;
 }
-
-
