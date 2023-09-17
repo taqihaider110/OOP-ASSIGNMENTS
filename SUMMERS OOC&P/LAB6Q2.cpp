@@ -3,12 +3,7 @@ using namespace std;
 
 class mealBill
 {
-private:
-    float meal_bill;
-    float sales_tax;
-    float Total_bill;
-    float payment;
-    float change;
+    float meal_bill,sales_tax,Total_bill,payment,change;
     string restaurant_name;
 
 public:
@@ -45,7 +40,7 @@ public:
 
 int main()
 {
-    mealBill customer("Cocochan");
+    mealBill customer("Taqi_Haider");
     customer.bill();
     customer.receipt();
     return 0;
