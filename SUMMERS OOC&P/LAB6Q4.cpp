@@ -1,105 +1,86 @@
 #include <iostream>
 using namespace std;
 
-class student_record
-{
+class StudentRecord {
     string studentId;
-    int no_of_courses;
-    float *credit_hours;
-    float total_credit_hours;
-    float grade_points;
-    float total_gradepoint;
-    char *grade;
-    float Cgpa;
+    int numCourses;
+    float *creditHours;
+    float totalCreditHours;
+    float gradePoints;
+    float totalGradePoints;
+    char *grades;
+    float CGPA;
 
 public:
-    student_record(string x) : studentId(x), credit_hours(nullptr), grade_points(0.0), Cgpa(0.0), total_credit_hours(0.0), total_gradepoint(0.0) {}
+    StudentRecord(string id) : studentId(id), creditHours(nullptr), gradePoints(0.0), CGPA(0.0), totalCreditHours(0.0), totalGradePoints(0.0) {}
 
-    void setData()
-    {
+    void setData() {
         cout << "Enter Number Of Courses in this semester: ";
-        cin >> no_of_courses;
-        credit_hours = new float[no_of_courses];
-        grade = new char[no_of_courses];
-        for (int i = 0; i < no_of_courses; i++)
-        {
+        cin >> numCourses;
+        creditHours = new float[numCourses];
+        grades = new char[numCourses];
+        for (int i = 0; i < numCourses; i++) {
             cout << "Enter credit hours of the course: ";
-            cin >> credit_hours[i];
+            cin >> creditHours[i];
 
             cout << "Enter grade in the course: ";
-            cin >> grade[i];
+            cin >> grades[i];
 
-            total_credit_hours = total_credit_hours + credit_hours[i];
+            totalCreditHours += creditHours[i];
         }
     }
-    void updateRecords(float newCredits, float newGradePoints)
-    {
-        total_credit_hours += newCredits;
-        total_gradepoint += newGradePoints;
+    
+    void updateRecords(float newCredits, float newGradePoints) {
+        totalCreditHours += newCredits;
+        totalGradePoints += newGradePoints;
     }
 
-    void grading_system()
-    {
-        for (int i = 0; i < no_of_courses; i++)
-        {
-            if (grade[i] == 'a' || grade[i] == 'A')
-            {
-                grade_points = credit_hours[i] * 4;
-                total_gradepoint = total_gradepoint + grade_points;
-            }
-            else if (grade[i] == 'b' || grade[i] == 'B')
-            {
-                grade_points = credit_hours[i] * 3;
-                total_gradepoint = total_gradepoint + grade_points;
-            }
-            else if (grade[i] == 'c' || grade[i] == 'C')
-            {
-                grade_points = credit_hours[i] * 2;
-                total_gradepoint = total_gradepoint + grade_points;
-            }
-            else if (grade[i] == 'd' || grade[i] == 'D')
-            {
-                grade_points = credit_hours[i] * 1;
-                total_gradepoint = total_gradepoint + grade_points;
-            }
-            else if (grade[i] == 'f' || grade[i] == 'F')
-            {
-                grade_points = credit_hours[i] * 0;
-                total_gradepoint = total_gradepoint + grade_points;
-            }
-            else
-            {
+    void calculateCGPA() {
+        for (int i = 0; i < numCourses; i++) {
+            if (grades[i] == 'A' || grades[i] == 'a') {
+                gradePoints = creditHours[i] * 4;
+                totalGradePoints += gradePoints;
+            } else if (grades[i] == 'B' || grades[i] == 'b') {
+                gradePoints = creditHours[i] * 3;
+                totalGradePoints += gradePoints;
+            } else if (grades[i] == 'C' || grades[i] == 'c') {
+                gradePoints = creditHours[i] * 2;
+                totalGradePoints += gradePoints;
+            } else if (grades[i] == 'D' || grades[i] == 'd') {
+                gradePoints = creditHours[i] * 1;
+                totalGradePoints += gradePoints;
+            } else if (grades[i] == 'F' || grades[i] == 'f') {
+                gradePoints = creditHours[i] * 0;
+                totalGradePoints += gradePoints;
+            } else {
                 cout << "Invalid Input" << endl;
             }
         }
 
-        Cgpa = total_gradepoint / total_credit_hours;
-        updateRecords(total_credit_hours, total_gradepoint);
+        CGPA = totalGradePoints / totalCreditHours;
+        updateRecords(totalCreditHours, totalGradePoints);
     }
 
-    void display()
-    {
-        cout << "Studen Id: " << studentId << endl;
-        cout << "Total credit hours: " << total_credit_hours << endl;
-        cout << "Total grade points: " << total_gradepoint << endl;
-        cout << "CGPA: " << Cgpa << endl;
-    }
-~student_record()
-    {
-        delete[] credit_hours;
-        delete[] grade;
+    void display() {
+        cout << "Student Id: " << studentId << endl;
+        cout << "Total credit hours: " << totalCreditHours << endl;
+        cout << "Total grade points: " << totalGradePoints << endl;
+        cout << "CGPA: " << CGPA << endl;
     }
 
+    ~StudentRecord() {
+        delete[] creditHours;
+        delete[] grades;
+    }
 };
 
-int main()
-{
-    string student_id;
+int main() {
+    string studentId;
     cout << "Enter Student Id: ";
-    cin >> student_id;
-    student_record s1(student_id);
-    s1.setData();
-    s1.grading_system();
-    s1.display();
+    cin >> studentId;
+    StudentRecord student(studentId);
+    student.setData();
+    student.calculateCGPA();
+    student.display();
     return 0;
 }
